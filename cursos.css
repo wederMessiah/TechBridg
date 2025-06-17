@@ -147,11 +147,16 @@ footer {
     gap: 20px; /* Espaçamento entre os cursos */
     padding: 20px;
     
+    
+}
+.course:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
 }
 
 .course {
     display: flex;
-    flex-direction: column; /* Organiza os elementos verticalmente */
+    flex-direction: column;
     justify-content: space-between; /* Garante que o botão fique na parte inferior */
     align-items: center; /* Centraliza os elementos horizontalmente */
     background-color: #fff; /* Fundo branco */
@@ -160,8 +165,7 @@ footer {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
     padding: 10px; /* Espaçamento interno */
     text-align: center; /* Centraliza o texto */
-    height: 450px; /* Garante que todos os cursos tenham a mesma altura */
-    
+    height: 450px; /* Garante que todos os cursos tenham a mesma altura */ 
 }
 
 .course img {
@@ -197,7 +201,7 @@ footer {
 }
 
 .course a:hover {
-    background-color: #45a049; /* Cor verde mais escura ao passar o mouse */
+    background-color: #112f57; /* Cor verde mais escura ao passar o mouse */
     transform: scale(1.05); /* Aumenta levemente o botão */
 }
 
