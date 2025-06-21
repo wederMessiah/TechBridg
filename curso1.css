@@ -1,0 +1,172 @@
+body {
+    background: #f6f7fb;
+    color: #222;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #112f57;
+    color: #fff;
+    padding: 22px 30px;
+    min-height: 80px;
+}
+
+.logo img {
+    height: 80px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.foto-perfil-navbar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+.btn-sair {
+    background: #e53935;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 18px;
+    transition: background 0.2s;
+}
+
+.btn-sair:hover {
+    background: #b71c1c;
+}
+
+.curso-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #0001;
+    padding: 40px 36px;
+    display: flex;
+    gap: 40px;
+}
+
+.modulos {
+    flex: 1;
+    background: #f6f7fb;
+    border-radius: 10px;
+    padding: 24px 18px;
+    min-width: 240px;
+}
+
+.modulos h3 {
+    margin-bottom: 18px;
+    color: #1a237e;
+}
+
+.modulos ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modulos li {
+    margin-bottom: 16px;
+}
+
+.modulos .concluido {
+    color: #388e3c;
+    font-weight: bold;
+}
+
+.modulos .bloqueado {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.btn-voltar {
+    background: #3949ab;
+    color: #fff;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 24px;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.btn-voltar:hover {
+    background: #1a237e;
+}
+
+.btn-assistir, .btn-avaliacao, .btn-certificado {
+    background: #ffb300;
+    color: #222;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: background 0.2s;
+}
+
+.btn-assistir:hover, .btn-avaliacao:hover, .btn-certificado:hover {
+    background: #ffa000;
+}
+
+.btn-certificado {
+    background: #388e3c;
+    color: #fff;
+}
+
+.btn-certificado:hover {
+    background: #256029;
+}
+
+.curso-conteudo {
+    flex: 3;
+}
+
+.curso-conteudo h1 {
+    color: #1a237e;
+    margin-bottom: 24px;
+}
+
+.curso-video {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 1px 8px #0002;
+    margin-bottom: 18px;
+}
+
+.descricao-curso {
+    margin-bottom: 24px;
+}

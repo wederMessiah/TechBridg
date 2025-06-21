@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso 1 - Fundamentos de Tecnologia</title>
+    <link rel="stylesheet" href="curso1.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logoWan.jpg" alt="Logo do site" style="height: 80px" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="Perfil.html">Perfil</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+            </ul>
+            <div class="user-info">
+                <img src="usuario.png" alt="Foto do Usuário" class="foto-perfil-navbar">
+                <span class="user-nome">Olá, Nome do Usuário</span>
+            </div>
+            <button class="btn-sair">Sair</button>
+        </nav>
+    </header>
+    <main>
+        <div class="curso-container">
+            <aside class="modulos">
+                <button class="btn-voltar" onclick="window.location.href='cursos.html'">&larr; Voltar para cursos</button>
+                <h3>Módulos e Aulas</h3>
+                <ul>
+                    <li class="concluido">✔ Módulo 1: Introdução</li>
+                    <li><button class="btn-assistir">▶ Aula 1: Fundamentos Básicos</button></li>
+                    <li class="bloqueado"><button class="btn-assistir" disabled>🔒 Aula 2: Conceitos Avançados</button></li>
+                    <li class="bloqueado"><button class="btn-avaliacao" disabled>🔒 Avaliação Final</button></li>
+                    <li class="bloqueado" id="certificado-modulo" style="display:none;">
+                        <button class="btn-certificado">🎓 Gerar Certificado</button>
+                    </li>
+                </ul>
+            </aside>
+            <section class="curso-conteudo">
+                <h1>Curso 1: Fundamentos de Tecnologia</h1>
+                <video class="curso-video" controls poster="thumb-curso1.jpg">
+                    <source src="videoaula1.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo HTML5.
+                </video>
+                <div class="descricao-curso">
+                    <p>Bem-vindo ao Curso 1! Aqui você aprenderá os fundamentos básicos de tecnologia, essenciais para sua formação.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

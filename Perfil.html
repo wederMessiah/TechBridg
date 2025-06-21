@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="logoWan.jpg" alt="Logo do site" style="height: 80px" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+            </ul>
+            <button class="btn-sair">Sair</button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="perfil">
+            <h1>Perfil do Aluno</h1>
+            <div class="perfil-info">
+                <div class="foto-perfil-container">
+                    <img src="usuario.png" alt="" class="foto-perfil" id="fotoPreview">
+                    <label for="foto" class="btn-upload-foto">Alterar Foto</label>
+                    <input type="file" id="foto" name="foto" accept="image/png, image/jpeg" style="display: none;">
+                </div>
+                <form class="form-perfil">
+                    <label>Nome:</label>
+                    <input type="text" name="nome" placeholder="Nome">
+                    <label>Sobrenome:</label>
+                    <input type="text" name="sobrenome" placeholder="Sobrenome">
+                    <label>Email:</label>
+                    <input type="email" name="email" placeholder="Email">
+                    <label>Senha Atual:</label>
+                    <input type="password" name="senha-atual" placeholder="Senha Atual">
+                    <label>Nova Senha:</label>
+                    <input type="password" name="nova-senha" placeholder="Nova Senha">
+                    <label>Confirme a Nova Senha:</label>
+                    <input type="password" name="confirma-nova-senha" placeholder="Confirme a Nova Senha">
+                    <button type="submit" class="btn-salvar">Salvar Alterações</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="meus-cursos">
+            <h2>Meus Cursos</h2>
+            <div class="cursos-lista">
+                <div class="curso-card">
+                    <img src="curso1.jpg" alt="Curso 1" class="imagem-curso">
+                    <div class="curso-info">
+                        <span class="nome-curso">Nome do Curso 1</span>
+                        <div class="progresso">
+                            <span>Progresso: 0%</span>
+                            <progress value="0" max="100"></progress>
+                        </div>
+                        <span class="status">Status: Em andamento</span>
+                        <a href="curso1.html" class="btn-acessar">Acessar Curso</a>
+                    </div>
+                </div>
+                <div class="curso-card">
+                    <img src="curso2.jpg" alt="Curso Suporte de TI" class="imagem-curso">
+                    <div class="curso-info">
+                        <span class="nome-curso">Suporte de TI</span>
+                        <div class="progresso">
+                            <span>Progresso: 0%</span>
+                            <progress value="0" max="100"></progress>
+                        </div>
+                        <span class="status">Status: Em andamento</span>
+                        <a href="curso2.html" class="btn-acessar">Acessar Curso</a>
+                    </div>
+                </div>
+                <!-- Adicione mais cursos aqui se quiser -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="#" title="Instagram">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="height: 24px" />
+                </a>
+                <a href="#" title="Facebook">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height: 24px" />
+                </a>
+                <a href="#" title="WhatsApp">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" style="height: 24px" />
+                </a>
+            </div>
+            <div class="footer-info">
+                <p>Contato: contato@meuplataforma.com.br | (11) 99999-9999</p>
+                <p>Endereço: Rua Exemplo, 123 - Centro, Cidade/UF</p>
+                <p>&copy; 2025 Meu Site. Todos os direitos reservados.</p>
+            </div>
+        </div> <!-- Fechamento correto da div.footer-content -->
+    </footer>
+
+    <script>
+document.getElementById('foto').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file && (file.type === "image/png" || file.type === "image/jpeg")) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            document.getElementById('fotoPreview').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+});
+
+// Primeiro curso
+const progressoSpan1 = document.querySelectorAll('.progresso span')[0];
+const progressoBarra1 = document.querySelectorAll('.progresso progress')[0];
+const statusSpan1 = document.querySelectorAll('.status')[0];
+let progresso1 = 0;
+function avancarCurso1() {
+    if (progresso1 < 100) {
+        progresso1 += 10;
+        progressoSpan1.textContent = `Progresso: ${progresso1}%`;
+        progressoBarra1.value = progresso1;
+        if (progresso1 < 100) {
+            statusSpan1.textContent = "Status: Em andamento";
+        } else {
+            statusSpan1.textContent = "Status: Concluído";
+        }
+    }
+}
+
+// Segundo curso
+const progressoSpan2 = document.querySelectorAll('.progresso span')[1];
+const progressoBarra2 = document.querySelectorAll('.progresso progress')[1];
+const statusSpan2 = document.querySelectorAll('.status')[1];
+let progresso2 = 0;
+function avancarCurso2() {
+    if (progresso2 < 100) {
+        progresso2 += 20;
+        progressoSpan2.textContent = `Progresso: ${progresso2}%`;
+        progressoBarra2.value = progresso2;
+        if (progresso2 < 100) {
+            statusSpan2.textContent = "Status: Em andamento";
+        } else {
+            statusSpan2.textContent = "Status: Concluído";
+        }
+    }
+}
+    </script>
+</body>
+</html>
