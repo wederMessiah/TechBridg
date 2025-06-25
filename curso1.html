@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso 1 - Fundamentos de Tecnologia</title>
+    <title>Curso: Desenvolvimento Web</title>
     <link rel="stylesheet" href="curso1.css">
 </head>
 <body>
@@ -30,26 +30,124 @@
                 <button class="btn-voltar" onclick="window.location.href='cursos.html'">&larr; Voltar para cursos</button>
                 <h3>Módulos e Aulas</h3>
                 <ul>
-                    <li class="concluido">✔ Módulo 1: Introdução</li>
-                    <li><button class="btn-assistir">▶ Aula 1: Fundamentos Básicos</button></li>
-                    <li class="bloqueado"><button class="btn-assistir" disabled>🔒 Aula 2: Conceitos Avançados</button></li>
-                    <li class="bloqueado"><button class="btn-avaliacao" disabled>🔒 Avaliação Final</button></li>
+                    <!-- Módulo 1 -->
+                    <li class="concluido">✔ Módulo 1: Introdução ao Desenvolvimento Web</li>
+                    <li><button class="btn-assistir" onclick="carregarVideo('videos/html_basico.mp4', 'Aula 1: HTML Básico')">▶ Aula 1: HTML Básico</button></li>
+                    <li><button class="btn-assistir" onclick="carregarVideo('videos/css_basico.mp4', 'Aula 2: CSS Básico')">▶ Aula 2: CSS Básico</button></li>
+                    <li class="bloqueado"><button class="btn-avaliacao" disabled>🔒 Avaliação do Módulo 1</button></li>
+
+                    <!-- Módulo 2 -->
+                    <li class="bloqueado">🔒 Módulo 2: JavaScript para Iniciantes</li>
+                    <li class="bloqueado"><button class="btn-assistir" disabled onclick="carregarVideo('videos/js_basico.mp4', 'Aula 1: Introdução ao JavaScript')">🔒 Aula 1: Introdução ao JavaScript</button></li>
+                    <li class="bloqueado"><button class="btn-assistir" disabled onclick="carregarVideo('videos/js_dom.mp4', 'Aula 2: Manipulação do DOM')">🔒 Aula 2: Manipulação do DOM</button></li>
+                    <li class="bloqueado"><button class="btn-avaliacao" disabled>🔒 Avaliação do Módulo 2</button></li>
+
+                    <!-- Módulo 3 -->
+                    <li class="bloqueado">🔒 Módulo 3: Desenvolvimento Frontend</li>
+                    <li class="bloqueado"><button class="btn-assistir" disabled onclick="carregarVideo('videos/responsividade.mp4', 'Aula 1: Design Responsivo')">🔒 Aula 1: Design Responsivo</button></li>
+                    <li class="bloqueado"><button class="btn-assistir" disabled onclick="carregarVideo('videos/framework_css.mp4', 'Aula 2: Frameworks CSS')">🔒 Aula 2: Frameworks CSS</button></li>
+                    <li class="bloqueado"><button class="btn-avaliacao" disabled>🔒 Avaliação do Módulo 3</button></li>
+
+                    <!-- Módulo 4 -->
+                    <li class="bloqueado">🔒 Módulo 4: Desenvolvimento Backend</li>
+                    <li class="bloqueado"><button class="btn-assistir" disabled onclick="carregarVideo('videos/backend_intro.mp4', 'Aula 1: Introdução ao Backend')">🔒 Aula 1: Introdução ao Backend</button></li>
+                    <li class="bloqueado"><button class="btn-assistir" disabled onclick="carregarVideo('videos/apis_rest.mp4', 'Aula 2: APIs REST')">🔒 Aula 2: APIs REST</button></li>
+                    <li class="bloqueado"><button class="btn-avaliacao" disabled>🔒 Avaliação do Módulo 4</button></li>
+
+                    <!-- Certificado -->
                     <li class="bloqueado" id="certificado-modulo" style="display:none;">
                         <button class="btn-certificado">🎓 Gerar Certificado</button>
                     </li>
                 </ul>
             </aside>
             <section class="curso-conteudo">
-                <h1>Curso 1: Fundamentos de Tecnologia</h1>
-                <video class="curso-video" controls poster="thumb-curso1.jpg">
-                    <source src="videoaula1.mp4" type="video/mp4">
+                <h1 id="titulo-aula">Curso: Desenvolvimento Web</h1>
+                <video id="video-aula" class="curso-video" controls poster="thumb-curso-web.jpg">
+                    <source id="video-source" src="" type="video/mp4">
                     Seu navegador não suporta vídeo HTML5.
                 </video>
                 <div class="descricao-curso">
-                    <p>Bem-vindo ao Curso 1! Aqui você aprenderá os fundamentos básicos de tecnologia, essenciais para sua formação.</p>
+                    <p id="descricao-aula">Bem-vindo ao Curso de Desenvolvimento Web! Aqui você aprenderá desde os fundamentos até conceitos avançados para criar sites e aplicações web.</p>
+                </div>
+                <div id="progresso-container">
+                    <p id="progresso-curso">Progresso do curso: 0%</p>
+                </div>
+                <div id="certificado-modulo" style="display: none; text-align: center; margin-top: 20px;">
+                    <a href="certificado.pdf" download class="btn-certificado">🎓 Baixar Certificado</a>
                 </div>
             </section>
         </div>
     </main>
+    <script>
+        // Total de aulas no curso
+        const totalAulas = 8; // Atualize com o número total de aulas no curso
+
+        function carregarVideo(videoSrc, titulo) {
+            const video = document.getElementById('video-aula');
+            const videoSource = document.getElementById('video-source');
+            const tituloAula = document.getElementById('titulo-aula');
+            const descricaoAula = document.getElementById('descricao-aula');
+
+            // Atualiza o título e o vídeo
+            tituloAula.textContent = titulo;
+            descricaoAula.textContent = `Você está assistindo: ${titulo}`;
+            videoSource.src = videoSrc;
+            video.load(); // Recarrega o vídeo
+            video.play(); // Reproduz o vídeo automaticamente
+
+            // Adiciona evento para monitorar o término do vídeo
+            video.onended = () => {
+                atualizarProgresso(titulo);
+            };
+        }
+
+        function atualizarProgresso(tituloAula) {
+            // Recupera o progresso atual do localStorage
+            let progresso = JSON.parse(localStorage.getItem('progressoCurso1')) || [];
+
+            // Adiciona a aula ao progresso se ainda não estiver concluída
+            if (!progresso.includes(tituloAula)) {
+                progresso.push(tituloAula);
+            }
+
+            // Calcula a porcentagem de conclusão
+            const porcentagem = Math.round((progresso.length / totalAulas) * 100);
+
+            // Salva o progresso atualizado no localStorage
+            localStorage.setItem('progressoCurso1', JSON.stringify(progresso));
+            localStorage.setItem('porcentagemCurso1', porcentagem);
+
+            // Atualiza a exibição do progresso na página
+            const progressoElemento = document.getElementById('progresso-curso');
+            if (progressoElemento) {
+                progressoElemento.textContent = `Progresso do curso: ${porcentagem}%`;
+            }
+
+            // Libera o certificado se o progresso for 100%
+            if (porcentagem === 100) {
+                const certificado = document.getElementById('certificado-modulo');
+                if (certificado) {
+                    certificado.style.display = 'block';
+                }
+            }
+        }
+
+        // Exibe o progresso salvo ao carregar a página
+        document.addEventListener('DOMContentLoaded', () => {
+            const porcentagemCurso = localStorage.getItem('porcentagemCurso1') || 0;
+            const progressoElemento = document.getElementById('progresso-curso');
+            if (progressoElemento) {
+                progressoElemento.textContent = `Progresso do curso: ${porcentagemCurso}%`;
+            }
+
+            // Verifica se o certificado deve ser exibido
+            if (porcentagemCurso == 100) {
+                const certificado = document.getElementById('certificado-modulo');
+                if (certificado) {
+                    certificado.style.display = 'block';
+                }
+            }
+        });
+    </script>
 </body>
 </html>
