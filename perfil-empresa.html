@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil da Empresa</title>
+    <link rel="stylesheet" href="perfil-empresa.css">
+</head>
+<body>
+    <header class="header-empresa">
+        <img src="logoWan.jpg" alt="Logo" class="logo-empresa">
+        <div class="header-direita">
+            <a href="index.html" class="btn-inicio">Início</a>
+            <button class="btn-filtro" type="button" onclick="alert('Abrir opções de filtro!')">
+                &#128269; Filtro
+            </button>
+        </div>
+    </header>
+    <main>
+        <h1 class="titulo-cadastro">Perfil da Empresa</h1>
+        <form class="form-perfil-empresa">
+            <label for="nomeEmpresa">Nome da Empresa:</label>
+            <input type="text" id="nomeEmpresa" name="nomeEmpresa" value="Exemplo Ltda" readonly>
+
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" value="12345678000199" readonly>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" value="contato@exemplo.com" readonly>
+
+            <label for="senhaAtual">Senha Atual:</label>
+            <input type="password" id="senhaAtual" name="senhaAtual" required>
+
+            <label for="novaSenha">Nova Senha:</label>
+            <input type="password" id="novaSenha" name="novaSenha" required minlength="6">
+
+            <label for="confirmaNovaSenha">Confirmar Nova Senha:</label>
+            <input type="password" id="confirmaNovaSenha" name="confirmaNovaSenha" required minlength="6">
+
+            <button type="submit">Salvar Alterações</button>
+        </form>
+
+        <section class="cursos-cadastrados">
+            <h2>Cursos Cadastrados</h2>
+            <div class="curso-card">
+                <img src="inteligencia.png" alt="HTML ICS" class="curso-imagem">
+                <div class="curso-info">
+                    <div class="curso-nome">Curso: HTML e CSS</div>
+                    <div class="curso-inscritos">Inscritos: 10</div>
+                </div>
+                <a href="curso-html.html" class="btn-acessar">Acessar Curso</a>
+            </div>
+        </section>
+    </main>
+    <footer class="footer-empresa">
+        <div class="footer-contato">
+            <strong>Contato:</strong> contato@exemplo.com | (11) 99999-9999
+        </div>
+        <div class="footer-redes">
+            Facebook | Instagram | LinkedIn
+        </div>
+    </footer>
+</body>
+</html>

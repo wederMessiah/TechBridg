@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Curso</title>
+    <link rel="stylesheet" href="perfil-empresa.css">
+    <link rel="stylesheet" href="cadastrar-curso.css">
+</head>
+<body>
+    <header class="header-empresa">
+        <img src="logoWan.jpg" alt="Logo" class="logo-empresa">
+        <div class="header-direita">
+            <a href="index.html" class="btn-inicio">Início</a>
+            <a href="perfil-empresa.html" class="btn-inicio">Perfil</a>
+            <button class="btn-filtro" type="button" onclick="alert('Abrir opções de filtro!')">
+                &#128269; Filtro
+            </button>
+        </div>
+    </header>
+    <main>
+        <h1 class="titulo-cadastro">Cadastrar Curso</h1>
+        <form class="form-cadastrar-curso">
+            <div class="imagem-curso-upload">
+                <label for="input-img" style="cursor:pointer;">
+                    <img src="imagem-curso.png" alt="Imagem do Curso" class="imagem-preview" id="preview-img">
+                </label>
+                <input type="file" accept="image/*" id="input-img" style="display:none" onchange="previewImagem(event)">
+                <button type="button" class="btn-upload" onclick="document.getElementById('input-img').click()">Escolher Imagem</button>
+                <span class="nome-arquivo-imagem" id="nome-arquivo"></span>
+            </div>
+            <label for="titulo">Título do Curso:</label>
+            <input type="text" id="titulo" name="titulo" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="3" required></textarea>
+
+            <div id="modulos">
+                <div class="modulo">
+                    <div class="modulo-titulo">Módulo 1: Introdução</div>
+                    <div class="aula">
+                        <label>Aula 1: Introdução ao Curso</label>
+                        <input type="text" placeholder="Título da aula" value="Introdução ao Curso" required>
+                        <input type="file" accept="video/*">
+                    </div>
+                    <div class="aula">
+                        <label>Aula 2: Conceitos Básicos</label>
+                        <input type="text" placeholder="Título da aula" value="Conceitos Básicos" required>
+                        <input type="file" accept="video/*">
+                    </div>
+                    <button type="button" class="btn-adicionar" onclick="adicionarAula(this)">Adicionar Aula</button>
+                </div>
+            </div>
+            <button type="button" class="btn-adicionar" onclick="adicionarModulo()">Adicionar Novo Módulo</button>
+
+            <label for="avaliacao">Link do Formulário de Avaliação Final:</label>
+            <input type="url" id="avaliacao" name="avaliacao" placeholder="Cole o link do formulário" required>
+
+            <label for="certificado">Upload do Modelo de Certificado:</label>
+            <input type="file" id="certificado" name="certificado" accept="application/pdf,image/*" required>
+
+            <button type="submit" class="btn-publicar">Publicar Curso</button>
+        </form>
+    </main>
+    <footer class="footer-empresa">
+        <div class="footer-contato">
+            <strong>Contato:</strong> contato@exemplo.com | (11) 99999-9999
+        </div>
+        <div class="footer-redes">
+            Facebook | Instagram | LinkedIn
+        </div>
+    </footer>
+    <script>
+        function previewImagem(event) {
+            const reader = new FileReader();
+            reader.onload = function(){
+                document.getElementById('preview-img').src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+            // Exibe o nome do arquivo
+            document.getElementById('nome-arquivo').textContent = event.target.files[0].name;
+        }
+
+        function adicionarAula(btn) {
+            const modulo = btn.closest('.modulo');
+            const aulas = modulo.querySelectorAll('.aula');
+            const aulaNum = aulas.length + 1;
+            const aulaDiv = document.createElement('div');
+            aulaDiv.className = 'aula';
+            aulaDiv.innerHTML = `
+                <label>Aula ${aulaNum}:</label>
+                <input type="text" placeholder="Título da aula" required>
+                <input type="file" accept="video/*">
+            `;
+            modulo.insertBefore(aulaDiv, btn);
+        }
+
+        function adicionarModulo() {
+            const modulos = document.getElementById('modulos');
+            const numModulos = modulos.querySelectorAll('.modulo').length + 1;
+            const moduloDiv = document.createElement('div');
+            moduloDiv.className = 'modulo';
+            moduloDiv.innerHTML = `
+                <div class="modulo-titulo">Módulo ${numModulos}:</div>
+                <div class="aula">
+                    <label>Aula 1:</label>
+                    <input type="text" placeholder="Título da aula" required>
+                    <input type="file" accept="video/*">
+                </div>
+                <button type="button" class="btn-adicionar" onclick="adicionarAula(this)">Adicionar Aula</button>
+            `;
+            modulos.appendChild(moduloDiv);
+        }
+    </script>
+</body>
+</html>

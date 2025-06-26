@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empresa</title>
+    <link rel="stylesheet" href="cadastro-empresa.css">
+</head>
+<body>
+    <header>
+        <button class="btn-voltar" onclick="window.history.back()">&#8592; Voltar</button>
+    </header>
+    <main>
+        <h1 class="titulo-cadastro">Cadastro de Empresa</h1>
+        <form class="form-cadastro-empresa">
+            <label for="nomeEmpresa">Nome da Empresa:</label>
+            <input type="text" id="nomeEmpresa" name="nomeEmpresa" required>
+
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" required pattern="\d{14}" placeholder="Apenas números">
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required minlength="6">
+
+            <label for="confirmaSenha">Confirme a Senha:</label>
+            <input type="password" id="confirmaSenha" name="confirmaSenha" required minlength="6">
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </main>
+    <script>
+        // Validação simples de senha
+        document.querySelector('.form-cadastro-empresa').addEventListener('submit', function(e) {
+            const senha = document.getElementById('senha').value;
+            const confirma = document.getElementById('confirmaSenha').value;
+            if (senha !== confirma) {
+                alert('As senhas não coincidem!');
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
